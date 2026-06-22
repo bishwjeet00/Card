@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Devjeet Sir &amp; Annushree Ma'am | A timeless union of hearts | With warm wishes from Bishwjeet">
+    <title>Devjeet &amp; Annushree | A New Chapter</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Inter:wght@300;400;500&amp;display=swap" rel="stylesheet">
+    <link rel="icon" href="assets/icons/ring.svg" type="image/svg+xml">
+</head>
+<body>
+    <!-- LOADING SCREEN -->
+    <div id="loader" class="loader">
+        <div class="loader-content">
+            <svg class="golden-ring" width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="60" cy="60" r="52" stroke="#D4AF37" stroke-width="8" stroke-dasharray="326" stroke-dashoffset="326"/>
+                <circle cx="60" cy="60" r="35" stroke="#D4AF37" stroke-width="4" opacity="0.6"/>
+            </svg>
+            <p class="loader-text">Preparing Something Special...</p>
+        </div>
+    </div>
+
+    <!-- NAV -->
+    <nav class="nav">
+        <div class="nav-content">
+            <div class="logo">
+                <span>D &amp; A</span>
+            </div>
+            <div class="nav-links">
+                <a href="#welcome" class="nav-link">Home</a>
+                <a href="#message" class="nav-link">Our Story</a>
+                <a href="#greeting" class="nav-link">Greeting</a>
+                <a href="#gallery" class="nav-link">Moments</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- WELCOME SECTION -->
+    <section id="welcome" class="section welcome">
+        <div class="welcome-overlay"></div>
+        <div class="welcome-content">
+            <div class="congrats">
+                <span class="small-text">With immense joy we announce</span>
+                <h1 class="main-title">Devjeet Sir</h1>
+                <div class="ampersand">&amp;</div>
+                <h1 class="main-title">Annushree Ma'am</h1>
+            </div>
+            
+            <div class="date">
+                <p class="date-text">Beginning their beautiful journey together</p>
+            </div>
+            
+            <button onclick="openGreeting()" class="luxury-button">
+                <span>Open the Invitation</span>
+                <div class="ripple"></div>
+            </button>
+        </div>
+        
+        <!-- Floating elements -->
+        <div class="floating-ring ring1"></div>
+        <div class="floating-ring ring2"></div>
+    </section>
+
+    <!-- QUOTE SECTION -->
+    <section id="quote" class="section quote-section">
+        <div class="quote-container glass">
+            <p id="typewriter" class="quote-text"></p>
+            <div class="quote-author">— A timeless reminder</div>
+        </div>
+    </section>
+
+    <!-- PERSONALIZED MESSAGE -->
+    <section id="message" class="section message-section">
+        <div class="message-content">
+            <h2 class="section-title">A Letter from the Heart</h2>
+            <div class="message-body">
+                <p>Dear Devjeet Sir and Annushree Ma'am,</p>
+                <p>In the elegant equation of life, where every moment finds its perfect balance, your union feels like the most beautiful composition — one where two distinct frames merge into a single, timeless photograph.</p>
+                <p>Just as a masterful lens captures light, contrast, and depth, may your shared journey focus on the joy that truly matters, preserve every precious memory in golden frames, and develop a love that only grows richer with time.</p>
+                <p>May your days be filled with harmony, your nights with warmth, and every chapter ahead be as graceful and meaningful as the vows you take.</p>
+                <p class="closing">With deepest respect and warmest wishes,</p>
+                <p class="signature">Bishwjeet</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- VIDEO GREETING -->
+    <section id="greeting" class="section greeting-section">
+        <div class="section-header">
+            <h2 class="section-title">A Special Greeting</h2>
+        </div>
+        <div class="video-wrapper glass">
+            <video id="wedding-video" class="wedding-video" controls poster="assets/images/poster.jpg">
+                <source src="assets/video/greeting.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="video-overlay">
+                <button onclick="toggleVideo()" class="play-btn">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 5.14V19.14L19 12.14L8 5.14Z" fill="#D4AF37"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery" class="section gallery-section">
+        <div class="section-header">
+            <h2 class="section-title">Captured Moments</h2>
+            <p class="subtitle">A glimpse into the beautiful journey ahead</p>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="https://picsum.photos/id/1015/600/800" alt="Memory 1" loading="lazy"></div>
+            <div class="gallery-item"><img src="https://picsum.photos/id/1027/600/800" alt="Memory 2" loading="lazy"></div>
+            <div class="gallery-item"><img src="https://picsum.photos/id/106/600/800" alt="Memory 3" loading="lazy"></div>
+            <div class="gallery-item"><img src="https://picsum.photos/id/133/600/800" alt="Memory 4" loading="lazy"></div>
+            <div class="gallery-item"><img src="https://picsum.photos/id/201/600/800" alt="Memory 5" loading="lazy"></div>
+            <div class="gallery-item"><img src="https://picsum.photos/id/251/600/800" alt="Memory 6" loading="lazy"></div>
+        </div>
+    </section>
+
+    <!-- THANK YOU -->
+    <section id="thankyou" class="section thankyou-section">
+        <div class="thankyou-content glass">
+            <div class="heart-icon">
+                <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.27 2 8.5C2 5.42 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5C22 12.27 18.6 15.36 13.45 20.03L12 21.35Z" fill="#D4AF37"/>
+                </svg>
+            </div>
+            <h2>With Warm Wishes</h2>
+            <p class="from">Bishwjeet</p>
+            <button onclick="triggerFinalAnimation()" class="luxury-button final-btn">
+                Celebrate with Us
+            </button>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>&copy; 2026 | Devjeet &amp; Annushree</p>
+    </footer>
+
+    <!-- CANVAS FOR PARTICLES -->
+    <canvas id="particles" class="particles-canvas"></canvas>
+
+    <script src="script.js"></script>
+</body>
+</html>
