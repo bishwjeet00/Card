@@ -1,0 +1,359 @@
+/* style.css */
+:root {
+    --gold: #D4AF37;
+    --gold-light: #E8C670;
+    --bg: #F8F1E9;
+    --text: #2C2C2C;
+    --glass: rgba(255, 255, 255, 0.75);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+h1, h2 {
+    font-family: 'Playfair Display', serif;
+}
+
+/* LOADER */
+.loader {
+    position: fixed;
+    inset: 0;
+    background: #F8F1E9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.loader-content {
+    text-align: center;
+}
+
+.golden-ring {
+    animation: ringRotate 4s linear infinite;
+}
+
+@keyframes ringRotate {
+    to { transform: rotate(360deg); }
+}
+
+.loader-text {
+    margin-top: 2rem;
+    font-size: 1.1rem;
+    letter-spacing: 4px;
+    color: var(--gold);
+    font-weight: 300;
+}
+
+/* NAV */
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 1.5rem 5%;
+    background: rgba(248, 241, 233, 0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+.nav-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 2px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 400;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--gold);
+}
+
+/* SECTIONS */
+.section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 120px 5% 80px;
+}
+
+.welcome {
+    background: linear-gradient(135deg, #F8F1E9 0%, #EDE4D5 100%);
+    overflow: hidden;
+}
+
+.welcome-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, transparent 40%, rgba(212, 175, 55, 0.08) 100%);
+    pointer-events: none;
+}
+
+.welcome-content {
+    max-width: 820px;
+    text-align: center;
+    z-index: 2;
+}
+
+.congrats .small-text {
+    font-size: 1.1rem;
+    letter-spacing: 6px;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+}
+
+.main-title {
+    font-size: clamp(3.5rem, 8vw, 6.5rem);
+    line-height: 1.05;
+    font-weight: 700;
+    color: #1F1F1F;
+}
+
+.ampersand {
+    font-size: 6rem;
+    color: var(--gold);
+    margin: 1rem 0;
+    font-weight: 400;
+}
+
+.date-text {
+    font-size: 1.35rem;
+    margin-top: 2.5rem;
+    color: #555;
+    font-weight: 300;
+}
+
+/* LUXURY BUTTON */
+.luxury-button {
+    margin-top: 3rem;
+    padding: 18px 52px;
+    font-size: 1.1rem;
+    background: transparent;
+    color: #1F1F1F;
+    border: 2px solid var(--gold);
+    border-radius: 60px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.luxury-button:hover {
+    background: var(--gold);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 20px 40px -10px rgba(212, 175, 55, 0.3);
+}
+
+.ripple {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.8s ease;
+}
+
+.luxury-button:active .ripple {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+
+/* GLASSMORPHISM */
+.glass {
+    background: var(--glass);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 28px;
+    padding: 3rem 2.5rem;
+    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.15);
+}
+
+/* QUOTE */
+.quote-section {
+    background: #1F1F1F;
+    color: white;
+}
+
+.quote-container {
+    max-width: 720px;
+    text-align: center;
+}
+
+.quote-text {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    line-height: 1.4;
+    font-style: italic;
+}
+
+/* MESSAGE */
+.message-section {
+    background: var(--bg);
+}
+
+.message-content {
+    max-width: 760px;
+}
+
+.section-title {
+    font-size: 2.8rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--gold);
+}
+
+.message-body p {
+    font-size: 1.25rem;
+    margin-bottom: 1.8rem;
+    color: #333;
+}
+
+.closing, .signature {
+    margin-top: 2.5rem;
+    font-style: italic;
+}
+
+.signature {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--gold);
+}
+
+/* VIDEO */
+.greeting-section {
+    background: #111;
+}
+
+.video-wrapper {
+    max-width: 960px;
+    width: 100%;
+    border-radius: 28px;
+    overflow: hidden;
+    position: relative;
+}
+
+.wedding-video {
+    width: 100%;
+    display: block;
+}
+
+/* GALLERY */
+.gallery-section {
+    background: var(--bg);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    aspect-ratio: 3 / 4;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px -10px rgba(0,0,0,0.2);
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.gallery-item:hover {
+    transform: scale(1.04);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+/* THANK YOU */
+.thankyou-section {
+    background: linear-gradient(135deg, #1F1F1F, #2C2C2C);
+    color: white;
+}
+
+.thankyou-content {
+    text-align: center;
+    max-width: 620px;
+}
+
+.heart-icon {
+    margin: 0 auto 2rem;
+    opacity: 0.9;
+}
+
+/* PARTICLES */
+.particles-canvas {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    
+    .section {
+        padding: 100px 8% 60px;
+    }
+    
+    .message-body p {
+        font-size: 1.1rem;
+    }
+}
