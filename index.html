@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Devjeet Sir & Annushree Ma'am Wedding Invitation">
+    <title>Devjeet & Annushree | A New Chapter</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --bg: #F8F1E9;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: #2C2C2C;
+            overflow-x: hidden;
+        }
+        h1, h2 { font-family: 'Playfair Display', serif; }
+
+        /* Loader */
+        #loader {
+            position: fixed; inset: 0; background: #F8F1E9;
+            display: flex; align-items: center; justify-content: center;
+            z-index: 9999; transition: opacity 1.2s ease;
+        }
+        .golden-ring { animation: ringRotate 3s linear infinite; }
+        @keyframes ringRotate { to { transform: rotate(360deg); } }
+        .loader-text { margin-top: 2rem; font-size: 1.1rem; letter-spacing: 4px; color: var(--gold); }
+
+        .section {
+            min-height: 100vh;
+            padding: 100px 5%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .welcome {
+            background: linear-gradient(135deg, #F8F1E9, #EDE4D5);
+            text-align: center;
+        }
+        .main-title { font-size: clamp(2.8rem, 9vw, 5.8rem); line-height: 1.05; }
+        .ampersand { font-size: 5.5rem; color: var(--gold); margin: 15px 0; }
+
+        .luxury-button {
+            margin-top: 3rem; padding: 18px 56px; font-size: 1.15rem;
+            border: 2px solid var(--gold); border-radius: 50px;
+            background: transparent; cursor: pointer; transition: all 0.4s;
+        }
+        .luxury-button:hover { background: var(--gold); color: white; }
+
+        .glass {
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(24px);
+            border-radius: 28px;
+            padding: 3rem 2.5rem;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.1);
+            max-width: 900px; width: 100%;
+        }
+        .quote-text {
+            font-size: clamp(1.9rem, 5vw, 2.8rem);
+            font-style: italic;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        /* Video Section */
+        .video-wrapper {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        video { width: 100%; display: block; }
+
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1100px;
+        }
+        .gallery-item {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: transform 0.4s ease;
+        }
+        .gallery-item:hover { transform: scale(1.04); }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        #particles {
+            position: fixed; inset: 0; pointer-events: none; z-index: 999; opacity: 0;
+        }
+
+        @media (max-width: 768px) {
+            .section { padding: 80px 6%; }
+            .gallery-grid { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- LOADER -->
+    <div id="loader">
+        <div style="text-align:center">
+            <svg class="golden-ring" width="120" height="120" viewBox="0 0 120 120">
+                <circle cx="60" cy="60" r="52" stroke="#D4AF37" stroke-width="8" stroke-dasharray="326" stroke-dashoffset="326"/>
+            </svg>
+            <p class="loader-text">Preparing Something Special...</p>
+        </div>
+    </div>
+
+    <!-- WELCOME -->
+    <section id="welcome" class="section welcome">
+        <div>
+            <span style="color:var(--gold); letter-spacing:6px; font-size:1.1rem;">With immense joy we announce</span>
+            <h1 class="main-title">Devjeet Sir</h1>
+            <div class="ampersand">&amp;</div>
+            <h1 class="main-title">Annushree Ma'am</h1>
+            <p style="margin-top:2.5rem; font-size:1.35rem;">Beginning their beautiful journey together</p>
+            <button onclick="document.getElementById('quote').scrollIntoView({behavior:'smooth'})" class="luxury-button">Open the Invitation</button>
+        </div>
+    </section>
+
+    <!-- QUOTE -->
+    <section id="quote" class="section" style="background:#F8F1E9;">
+        <div class="glass">
+            <p id="typewriter" class="quote-text"></p>
+        </div>
+    </section>
+
+    <!-- PERSONAL MESSAGE -->
+    <section class="section">
+        <div class="glass">
+            <h2 style="text-align:center; color:var(--gold); margin-bottom:2rem;">A Letter from the Heart</h2>
+            <p>Dear Devjeet Sir and Annushree Ma'am,</p>
+            <p style="margin:1.5rem 0;">In the elegant equation of life, where every moment finds its perfect balance, your union feels like the most beautiful composition — one where two distinct frames merge into a single, timeless photograph.</p>
+            <p>May your shared journey focus on the joy that truly matters, preserve every precious memory in golden frames, and develop a love that only grows richer with time.</p>
+            <p style="margin-top:2.5rem; font-style:italic;">With deepest respect and warmest wishes,<br><strong>Bishwjeet</strong></p>
+        </div>
+    </section>
+
+    <!-- VIDEO / SONG SECTION -->
+    <section class="section" style="background:#F8F1E9;">
+        <div class="glass">
+            <h2 style="text-align:center; color:var(--gold); margin-bottom:2rem;">A Special Greeting</h2>
+            <div class="video-wrapper">
+                <video controls>
+                    <source src="assets/video/greeting.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <p style="text-align:center; margin-top:1rem; color:#666;">Play the special message / song</p>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="section">
+        <div style="width:100%; max-width:1200px;">
+            <h2 style="text-align:center; color:var(--gold); margin-bottom:3rem;">Captured Moments</h2>
+            <div class="gallery-grid">
+                <!-- Yahan apni photos daal sakte ho -->
+                <div class="gallery-item"><img src="https://picsum.photos/id/1015/600/800" alt="Memory 1"></div>
+                <div class="gallery-item"><img src="https://picsum.photos/id/1027/600/800" alt="Memory 2"></div>
+                <div class="gallery-item"><img src="https://picsum.photos/id/106/600/800" alt="Memory 3"></div>
+                <div class="gallery-item"><img src="https://picsum.photos/id/133/600/800" alt="Memory 4"></div>
+                <div class="gallery-item"><img src="https://picsum.photos/id/201/600/800" alt="Memory 5"></div>
+                <div class="gallery-item"><img src="https://picsum.photos/id/251/600/800" alt="Memory 6"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- THANK YOU -->
+    <section class="section" style="background:#111; color:white;">
+        <div class="glass" style="text-align:center;">
+            <h2>With Warm Wishes</h2>
+            <p style="margin:2rem 0; font-size:1.4rem;">Bishwjeet</p>
+            <button onclick="triggerFinalAnimation()" class="luxury-button">Celebrate with Us</button>
+        </div>
+    </section>
+
+    <canvas id="particles"></canvas>
+
+    <script>
+        // Loader
+        function hideLoader() {
+            const loader = document.getElementById('loader');
+            if (loader) {
+                loader.style.opacity = '0';
+                setTimeout(() => loader.style.display = 'none', 1400);
+            }
+        }
+
+        // Typewriter
+        function startTypewriter() {
+            const el = document.getElementById('typewriter');
+            const text = "Life is like a camera. Focus on what's important, capture the good times, and enjoy every moment.";
+            let i = 0;
+            el.innerHTML = '';
+            function type() {
+                if (i < text.length) {
+                    el.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, 45);
+                }
+            }
+            type();
+        }
+
+        // Particles
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        class Particle {
+            constructor() { this.reset(); }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * -50;
+                this.size = Math.random() * 9 + 5;
+                this.speed = Math.random() * 2.5 + 1;
+                this.angle = Math.random() * Math.PI * 2;
+            }
+            update() {
+                this.y += this.speed;
+                this.angle += 0.02;
+                if (this.y > canvas.height + 50) this.reset();
+            }
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = 0.7;
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.angle);
+                ctx.fillStyle = '#D4AF37';
+                ctx.beginPath();
+                ctx.ellipse(0, 0, this.size, this.size * 0.6, 0, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('load', () => {
+            hideLoader();
+            startTypewriter();
+            resize();
+            particles = Array(130).fill().map(() => new Particle());
+            animate();
+        });
+
+        window.triggerFinalAnimation = () => {
+            canvas.style.opacity = '1';
+            particles = Array(280).fill().map(() => new Particle());
+            setTimeout(() => canvas.style.opacity = '0', 8500);
+        };
+    </script>
+</body>
+</html>
