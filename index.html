@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Devjeet Sir & Annushree Ma'am</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root { --gold: #D4AF37; --bg: #F8F1E9; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: #2C2C2C;
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+        h1, h2 { font-family: 'Playfair Display', serif; }
+
+        #loader {
+            position: fixed; inset: 0; background: #F8F1E9;
+            display: flex; align-items: center; justify-content: center;
+            z-index: 9999; transition: opacity 1.2s ease;
+        }
+        .golden-ring { animation: ringRotate 3s linear infinite; }
+        @keyframes ringRotate { to { transform: rotate(360deg); } }
+
+        .section {
+            min-height: 100vh;
+            padding: 80px 5%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .welcome {
+            background: linear-gradient(135deg, #F8F1E9, #EDE4D5);
+            text-align: center;
+        }
+        .main-title { font-size: clamp(2.6rem, 8vw, 5rem); line-height: 1.1; }
+        .ampersand { font-size: 5rem; color: var(--gold); margin: 10px 0; }
+
+        .glass {
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(24px);
+            border-radius: 28px;
+            padding: 3rem 2.5rem;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.12);
+            max-width: 820px;
+            width: 100%;
+        }
+
+        .message {
+            font-size: 1.25rem;
+            line-height: 1.8;
+        }
+
+        .signature {
+            margin-top: 3rem;
+            font-size: 1.5rem;
+            color: var(--gold);
+            font-style: italic;
+        }
+
+        #particles {
+            position: fixed; inset: 0; pointer-events: none; z-index: 999; opacity: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- LOADER -->
+    <div id="loader">
+        <div style="text-align:center">
+            <svg class="golden-ring" width="120" height="120" viewBox="0 0 120 120">
+                <circle cx="60" cy="60" r="52" stroke="#D4AF37" stroke-width="8" stroke-dasharray="326" stroke-dashoffset="326"/>
+            </svg>
+            <p style="margin-top:2rem; font-size:1.1rem; letter-spacing:4px; color:var(--gold);">A Special Gift is Opening...</p>
+        </div>
+    </div>
+
+    <!-- MAIN GIFT -->
+    <section class="section welcome">
+        <div class="glass">
+            <h2 style="color:var(--gold); margin-bottom:1rem; font-size:1.4rem;">With Love & Respect</h2>
+            
+            <h1 class="main-title">Devjeet Sir</h1>
+            <div class="ampersand">&amp;</div>
+            <h1 class="main-title">Annushree Ma'am</h1>
+
+            <div style="height:2px; background:var(--gold); width:80px; margin:2.5rem auto;"></div>
+
+            <p class="message">
+                Sir aur Ma'am,<br><br>
+                Aap dono ki shaadi ek bahut khoobsurat aur pyaari shuruaat hai. 
+                Aapki understanding, respect aur pyaar dekh kar dil khush ho jata hai.<br><br>
+                
+                Life sach mein ek camera ki tarah hai — aap dono ne jo bhi achhe pal capture kiye hain, 
+                aage aur bhi sundar memories capture karte rahiye.<br><br>
+                
+                Yeh chhota sa digital gift aapke naye chapter ke liye mera taraf se ek nazrana hai.
+            </p>
+
+            <div class="signature">
+                — Bishwjeet
+            </div>
+
+            <button onclick="triggerFinalAnimation()" style="margin-top:3rem;" class="luxury-button">
+                Celebrate This Moment
+            </button>
+        </div>
+    </section>
+
+    <!-- QUOTE -->
+    <section class="section" style="background:#F8F1E9;">
+        <div class="glass">
+            <p id="typewriter" style="font-size:1.65rem; font-style:italic; text-align:center; line-height:1.6;"></p>
+        </div>
+    </section>
+
+    <!-- GALLERY / MEMORIES -->
+    <section class="section">
+        <div style="width:100%; max-width:1100px;">
+            <h2 style="text-align:center; color:var(--gold); margin-bottom:2.5rem;">Some Beautiful Memories</h2>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:18px;">
+                <img src="https://picsum.photos/id/1015/600/800" style="border-radius:20px; width:100%;">
+                <img src="https://picsum.photos/id/1027/600/800" style="border-radius:20px; width:100%;">
+                <img src="https://picsum.photos/id/106/600/800" style="border-radius:20px; width:100%;">
+                <img src="https://picsum.photos/id/201/600/800" style="border-radius:20px; width:100%;">
+            </div>
+        </div>
+    </section>
+
+    <canvas id="particles"></canvas>
+
+    <script>
+        function hideLoader() {
+            const loader = document.getElementById('loader');
+            if (loader) {
+                loader.style.opacity = '0';
+                setTimeout(() => loader.style.display = 'none', 1400);
+            }
+        }
+
+        function startTypewriter() {
+            const el = document.getElementById('typewriter');
+            const text = "Life is like a camera. Focus on what's important, capture the good times, and enjoy every moment.";
+            let i = 0;
+            el.innerHTML = '';
+            function type() {
+                if (i < text.length) {
+                    el.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, 50);
+                }
+            }
+            type();
+        }
+
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        class Particle {
+            constructor() { this.reset(); }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * -50;
+                this.size = Math.random() * 9 + 5;
+                this.speed = Math.random() * 2.5 + 1;
+                this.angle = Math.random() * Math.PI * 2;
+            }
+            update() { this.y += this.speed; this.angle += 0.02; if(this.y > canvas.height + 50) this.reset(); }
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = 0.7;
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.angle);
+                ctx.fillStyle = '#D4AF37';
+                ctx.beginPath();
+                ctx.ellipse(0, 0, this.size, this.size*0.6, 0, 0, Math.PI*2);
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        function animate() {
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('load', () => {
+            hideLoader();
+            startTypewriter();
+            resize();
+            particles = Array(140).fill().map(() => new Particle());
+            animate();
+        });
+
+        window.triggerFinalAnimation = () => {
+            canvas.style.opacity = '1';
+            particles = Array(300).fill().map(() => new Particle());
+            setTimeout(() => canvas.style.opacity = '0', 8000);
+        };
+    </script>
+</body>
+</html>
