@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Devjeet Sir & Annushree Ma'am Wedding Invitation">
+    <title>Devjeet & Annushree | A New Chapter</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --bg: #F8F1E9;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg) !important;
+            color: #2C2C2C;
+            overflow-x: hidden;
+        }
+        
+        h1, h2 { font-family: 'Playfair Display', serif; }
+
+        /* LOADER */
+        #loader {
+            position: fixed;
+            inset: 0;
+            background: #F8F1E9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 1.2s ease;
+        }
+        .golden-ring { animation: ringRotate 3s linear infinite; }
+        @keyframes ringRotate { to { transform: rotate(360deg); } }
+        .loader-text {
+            margin-top: 2rem;
+            font-size: 1.1rem;
+            letter-spacing: 4px;
+            color: var(--gold);
+        }
+
+        .section {
+            min-height: 100vh;
+            padding: 100px 5%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .welcome {
+            background: linear-gradient(135deg, #F8F1E9, #EDE4D5);
+            text-align: center;
+        }
+        .main-title {
+            font-size: clamp(2.8rem, 9vw, 5.5rem);
+            line-height: 1.05;
+        }
+        .ampersand {
+            font-size: 5rem;
+            color: var(--gold);
+            margin: 10px 0;
+        }
+        .luxury-button {
+            margin-top: 3rem;
+            padding: 18px 52px;
+            font-size: 1.15rem;
+            border: 2px solid var(--gold);
+            border-radius: 50px;
+            background: transparent;
+            color: #2C2C2C;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+        .luxury-button:hover {
+            background: var(--gold);
+            color: white;
+        }
+        .glass {
+            background: rgba(255,255,255,0.92) !important;
+            backdrop-filter: blur(24px);
+            border-radius: 24px;
+            padding: 2.8rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            max-width: 800px;
+            width: 100%;
+        }
+        .quote-text {
+            font-size: clamp(1.8rem, 5vw, 2.6rem);
+            font-style: italic;
+            text-align: center;
+            color: #333;
+        }
+
+        #particles {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 999;
+            opacity: 0;
+        }
+
+        @media (max-width: 768px) {
+            .section { padding: 80px 6%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- LOADER -->
+    <div id="loader">
+        <div style="text-align:center">
+            <svg class="golden-ring" width="110" height="110" viewBox="0 0 120 120">
+                <circle cx="60" cy="60" r="52" stroke="#D4AF37" stroke-width="8" stroke-dasharray="326" stroke-dashoffset="326"/>
+            </svg>
+            <p class="loader-text">Preparing Something Special...</p>
+        </div>
+    </div>
+
+    <!-- WELCOME -->
+    <section id="welcome" class="section welcome">
+        <div>
+            <span style="color:var(--gold); letter-spacing:5px; font-size:1.1rem;">With immense joy we announce</span>
+            <h1 class="main-title">Devjeet Sir</h1>
+            <div class="ampersand">&amp;</div>
+            <h1 class="main-title">Annushree Ma'am</h1>
+            <p style="margin-top:2rem; font-size:1.3rem;">Beginning their beautiful journey together</p>
+            <button onclick="openGreeting()" class="luxury-button">Open the Invitation</button>
+        </div>
+    </section>
+
+    <!-- QUOTE -->
+    <section class="section" style="background:#F8F1E9;">
+        <div class="glass">
+            <p id="typewriter" class="quote-text"></p>
+        </div>
+    </section>
+
+    <!-- MESSAGE -->
+    <section class="section">
+        <div class="glass">
+            <h2 style="text-align:center; color:var(--gold); margin-bottom:2rem;">A Letter from the Heart</h2>
+            <p>Dear Devjeet Sir and Annushree Ma'am,</p>
+            <p style="margin:1.2rem 0;">In the beautiful balance of life, your union is like a perfect photograph — full of light, love and memories.</p>
+            <p>May your journey together be filled with joy, harmony and endless beautiful moments.</p>
+            <p style="margin-top:2rem; font-style:italic;">With warm wishes,<br><strong>Bishwjeet</strong></p>
+        </div>
+    </section>
+
+    <!-- THANK YOU -->
+    <section class="section" style="background:#F8F1E9;">
+        <div class="glass" style="text-align:center;">
+            <h2>With Warm Wishes</h2>
+            <p style="margin:1.5rem 0; font-size:1.3rem;">Bishwjeet</p>
+            <button onclick="triggerFinalAnimation()" class="luxury-button">Celebrate with Us</button>
+        </div>
+    </section>
+
+    <canvas id="particles"></canvas>
+
+    <script>
+        function hideLoader() {
+            const loader = document.getElementById('loader');
+            if (loader) {
+                loader.style.opacity = '0';
+                setTimeout(() => loader.style.display = 'none', 1400);
+            }
+        }
+
+        function startTypewriter() {
+            const el = document.getElementById('typewriter');
+            const text = "Life is like a camera. Focus on what's important, capture the good times, and enjoy every moment.";
+            let i = 0;
+            el.innerHTML = '';
+            function type() {
+                if (i < text.length) {
+                    el.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, 45);
+                }
+            }
+            type();
+        }
+
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        class Particle {
+            constructor() { this.reset(); }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * -50;
+                this.size = Math.random() * 9 + 5;
+                this.speed = Math.random() * 2.5 + 1;
+                this.angle = Math.random() * Math.PI * 2;
+            }
+            update() {
+                this.y += this.speed;
+                this.angle += 0.02;
+                if (this.y > canvas.height + 50) this.reset();
+            }
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = 0.7;
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.angle);
+                ctx.fillStyle = '#D4AF37';
+                ctx.beginPath();
+                ctx.ellipse(0, 0, this.size, this.size * 0.6, 0, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('load', () => {
+            hideLoader();
+            startTypewriter();
+            resize();
+            particles = Array(120).fill().map(() => new Particle());
+            animate();
+            setTimeout(hideLoader, 5000);
+        });
+
+        window.openGreeting = () => document.querySelectorAll('.section')[1].scrollIntoView({ behavior: 'smooth' });
+        window.triggerFinalAnimation = () => {
+            canvas.style.opacity = '1';
+            particles = Array(250).fill().map(() => new Particle());
+            setTimeout(() => canvas.style.opacity = '0', 8000);
+        };
+        window.addEventListener('resize', resize);
+    </script>
+</body>
+</html>
