@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Devjeet Sir & Annushree Ma'am</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+   
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --bg: #F8F1E9;
+            --dark: #2C2C2C;
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--dark);
+            line-height: 1.8;
+        }
+
+        h1, h2 { font-family: 'Playfair Display', serif; }
+
+        /* Loader */
+        #loader {
+            position: fixed; inset: 0;
+            background: #F8F1E9;
+            display: flex; align-items: center; justify-content: center;
+            z-index: 9999; transition: opacity 1.5s ease;
+        }
+
+        .golden-ring { animation: ringRotate 3s linear infinite; }
+        @keyframes ringRotate { to { transform: rotate(360deg); } }
+
+        .section {
+            padding: 100px 5% 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .glass {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(24px);
+            border-radius: 28px;
+            padding: 3rem 2.5rem;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+            max-width: 860px;
+            width: 100%;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        .welcome { background: linear-gradient(135deg, #F8F1E9, #EDE4D5); }
+
+        .main-title { font-size: clamp(2.6rem, 8vw, 5rem); line-height: 1.05; margin: 10px 0; }
+        .ampersand { font-size: 5rem; color: var(--gold); margin: 15px 0; }
+
+        .message { font-size: 1.25rem; text-align: left; }
+
+        .signature {
+            margin-top: 3rem;
+            font-size: 1.6rem;
+            color: var(--gold);
+            font-style: italic;
+            text-align: right;
+        }
+
+        .luxury-button {
+            margin-top: 2.5rem;
+            padding: 14px 42px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: white;
+            background: linear-gradient(135deg, #D4AF37, #b38b2d);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .luxury-button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.4);
+        }
+
+        #typewriter {
+            font-size: clamp(1.5rem, 4vw, 1.9rem);
+            font-style: italic;
+            text-align: center;
+            line-height: 1.7;
+            min-height: 180px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-grid img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-grid img:hover { transform: scale(1.04); }
+    </style>
+</head>
+<body>
+
+    <!-- LOADER -->
+    <div id="loader">
+        <div style="text-align:center">
+            <svg class="golden-ring" width="130" height="130" viewBox="0 0 130 130">
+                <circle cx="65" cy="65" r="56" stroke="#D4AF37" stroke-width="9" fill="none" stroke-dasharray="352" stroke-dashoffset="352"/>
+            </svg>
+            <p style="margin-top:2.2rem; font-size:1.15rem; letter-spacing:5px; color:var(--gold);">
+                A Special Gift is Opening...
+            </p>
+        </div>
+    </div>
+
+    <!-- Particles -->
+    <canvas id="particles" style="position:fixed; inset:0; pointer-events:none; z-index:999; opacity:0;"></canvas>
+
+    <!-- MAIN WEDDING CARD -->
+    <section class="section welcome">
+        <div class="glass">
+            <h2 style="color:var(--gold); margin-bottom:1rem; font-size:1.45rem;">With Love & Respect</h2>
+           
+            <h1 class="main-title">Devjeet Sir</h1>
+            <div class="ampersand">&amp;</div>
+            <h1 class="main-title">Annushree Ma'am</h1>
+
+            <div style="height:3px; background:var(--gold); width:90px; margin:2.8rem auto;"></div>
+
+            <p class="message">
+                Devjeet Sir & Annushree Ma'am,<br><br>
+                Congratulations on your Wedding! 💐 <br><br>
+                Some people enter our lives as teachers,
+                but leave a much deeper mark by
+                becoming mentors and guiding lights.
+                For me, Sir, you are one of those rare people.
+                Although I have known you for only a year,
+                the respect and bond we share feel far
+                greater than time itself. <br><br>
+                Thank you for always believing in me,
+                motivating me, and standing by my side
+                whenever I needed guidance.
+                One memory I will always cherish is
+                the day of my admit card.
+                Despite the heavy traffic and all the inconvenience,
+                you came on your bike and helped me
+                without a second thought. That simple act showed me
+                that you don't just teach your students
+                —you truly care for them. Your kindness, support,
+                and encouragement have inspired me in ways
+                words can never fully express.<br><br>
+                And to Annushree Ma'am, welcome to this beautiful new journey.
+                I sincerely wish you both a lifetime filled
+                with love, happiness, understanding, good health, and countless
+                unforgettable moments together. May your home always be
+                filled with laughter, peace, and endless blessings.<br><br>
+                Sir, thank you for being not just an exceptional teacher,
+                but also an elder brother and a mentor I will always look up to.<br><br>
+                Congratulations once again on this wonderful new chapter of your lives.
+                May God bless your marriage with everlasting love and joy.<br><br>
+                May God bless your marriage with everlasting joy and peace.
+            </p>
+
+            <div class="signature">— Bishwjeet</div>
+
+            <button onclick="triggerFinalAnimation()" class="luxury-button">
+                Celebrate This Moment ✨
+            </button>
+        </div>
+    </section>
+
+    <!-- QUOTE -->
+    <section class="section" style="background:#F8F1E9;">
+        <div class="glass">
+            <p id="typewriter"></p>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="section" style="background:#F8F1E9;">
+        <div style="width:100%; max-width:1280px; margin:0 auto;">
+            <h2 style="text-align:center; color:#D4AF37; margin-bottom:2.5rem; font-size:2.4rem;">
+                Captured Moments
+            </h2>
+
+            <div style="text-align:center; margin-bottom:3.5rem;">
+                <label for="imageUpload" class="luxury-button" style="display:inline-block; cursor:pointer; padding:16px 48px;">
+                    📸 Apni Photos Upload Karo
+                </label>
+                <input type="file" id="imageUpload" accept="image/*" multiple style="display:none;">
+                <p style="margin-top:12px; color:#666;">Multiple photos select kar sakte ho</p>
+            </div>
+
+            <div class="gallery-grid" id="galleryGrid"></div>
+        </div>
+    </section>
+
+    <script>
+        let canvas, ctx, particles = [];
+        let uploadedImages = [];
+
+        function hideLoader() {
+            const loader = document.getElementById("loader");
+            loader.style.opacity = "0";
+            setTimeout(() => loader.style.display = "none", 1200);
+        }
+
+        function startTypewriter() {
+            const el = document.getElementById("typewriter");
+            const text = "Life is like a camera. Focus on what's important, capture the good times, develop from the negatives, and if things don't work out, take another shot.";
+            let i = 0;
+            el.textContent = "";
+            function type() {
+                if (i < text.length) {
+                    el.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(type, 45);
+                }
+            }
+            type();
+        }
+
+        class Particle {
+            constructor() { this.reset(); }
+            reset() {
+                this.x = Math.random() * window.innerWidth;
+                this.y = Math.random() * -100;
+                this.size = Math.random() * 7 + 4;
+                this.speed = Math.random() * 2.5 + 1.2;
+                this.angle = Math.random() * Math.PI * 2;
+                this.rotationSpeed = (Math.random() - 0.5) * 0.1;
+            }
+            update() {
+                this.y += this.speed;
+                this.angle += this.rotationSpeed;
+                if (this.y > window.innerHeight + 50) this.reset();
+            }
+            draw() {
+                if (!ctx) return;
+                ctx.save();
+                ctx.globalAlpha = 0.75;
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.angle);
+                ctx.fillStyle = "#D4AF37";
+                ctx.beginPath();
+                ctx.ellipse(0, 0, this.size, this.size*0.65, 0, 0, Math.PI*2);
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        function resizeCanvas() {
+            if (canvas) {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+        }
+
+        function animateParticles() {
+            if (!ctx) return;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(animateParticles);
+        }
+
+        window.triggerFinalAnimation = () => {
+            canvas.style.opacity = "1";
+            particles = Array.from({ length: 380 }, () => new Particle());
+            setTimeout(() => canvas.style.opacity = "0", 8000);
+        };
+
+        // Gallery Functions
+        function loadGallery() {
+            const grid = document.getElementById("galleryGrid");
+            if (!grid) return;
+            grid.innerHTML = "";
+
+            const defaults = ["Assets/Images/photo1.jpg","Assets/Images/photo2.jpg","Assets/Images/photo3.jpg","Assets/Images/photo4.jpg","Assets/Images/photo5.jpg","Assets/Images/photo6.jpg"];
+            defaults.forEach(src => {
+                const img = document.createElement("img");
+                img.src = src;
+                grid.appendChild(img);
+            });
+
+            uploadedImages.forEach(src => {
+                const img = document.createElement("img");
+                img.src = src;
+                grid.appendChild(img);
+            });
+        }
+
+        function handleImageUpload(e) {
+            Array.from(e.target.files).forEach(file => {
+                if (!file.type.startsWith('image/')) return;
+                const reader = new FileReader();
+                reader.onload = (ev) => {
+                    uploadedImages.unshift(ev.target.result);
+                    loadGallery();
+                    localStorage.setItem("weddingUploadedImages", JSON.stringify(uploadedImages));
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+        // Init
+        document.addEventListener("DOMContentLoaded", () => {
+            canvas = document.getElementById("particles");
+            if (canvas) {
+                ctx = canvas.getContext("2d");
+                resizeCanvas();
+                window.addEventListener("resize", resizeCanvas);
+            }
+
+            particles = Array.from({ length: 140 }, () => new Particle());
+            animateParticles();
+            startTypewriter();
+            setTimeout(hideLoader, 900);
+
+            // Gallery
+            document.getElementById("imageUpload").addEventListener("change", handleImageUpload);
+
+            const saved = localStorage.getItem("weddingUploadedImages");
+            if (saved) uploadedImages = JSON.parse(saved);
+
+            loadGallery();
+        });
+    </script>
+</body>
+</html>
