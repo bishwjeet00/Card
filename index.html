@@ -200,21 +200,28 @@
     </section>
 
     <!-- GALLERY -->
-    <section class="section" style="background:#F8F1E9;">
-        <div style="width:100%; max-width:1280px;">
-            <h2 style="text-align:center; color:#D4AF37; margin-bottom:3rem; font-size:2.4rem;">
-                Captured Moments
-            </h2>
-            <div class="gallery-grid">
-                <img src="Assets/Images/photo1.jpg" alt="">
-                <img src="Assets/Images/photo2.jpg" alt="">
-                <img src="Assets/Images/photo3.jpg" alt="">
-                <img src="Assets/Images/photo4.jpg" alt="">
-                <img src="Assets/Images/photo5.jpg" alt="">
-                <img src="Assets/Images/photo6.jpg" alt="">
-            </div>
+<section class="section" style="background:#F8F1E9;">
+    <div style="width:100%; max-width:1280px;">
+        <h2 style="text-align:center; color:#D4AF37; margin-bottom:2rem; font-size:2.4rem;">
+            Captured Moments
+        </h2>
+
+        <!-- Upload Area -->
+        <div style="text-align:center; margin-bottom:3rem;">
+            <label for="imageUpload" class="luxury-button" style="display:inline-block; cursor:pointer;">
+                📸 Apni Photos Upload Karo
+            </label>
+            <input type="file" id="imageUpload" accept="image/*" multiple style="display:none;">
+            <p style="margin-top:10px; font-size:0.95rem; color:#666;">
+                Multiple photos select kar sakte ho
+            </p>
         </div>
-    </section>
+
+        <div class="gallery-grid" id="galleryGrid">
+            <!-- Dynamic images yahan aayengi -->
+        </div>
+    </div>
+</section>
 
     <script>
         // ==========================
@@ -350,6 +357,72 @@
             // Hide loader
             setTimeout(hideLoader, 800);
         });
+     </script>
+        <script>
+// ... purana code same rahega ...
+
+// ==========================
+// Image Upload + Gallery
+// ==========================
+let uploadedImages = [];
+
+function loadGallery() {
+    const grid = document.getElementById("galleryGrid");
+    grid.innerHTML = "";
+
+    // Default images (agar koi uploaded nahi hai)
+    const defaultImages = [
+        "Assets/Images/photo1.jpg",
+        "Assets/Images/photo2.jpg",
+        "Assets/Images/photo3.jpg",
+        "Assets/Images/photo4.jpg",
+        "Assets/Images/photo5.jpg",
+        "Assets/Images/photo6.jpg"
+    ];
+
+    // Show default + uploaded
+    [...defaultImages, ...uploadedImages].forEach(src => {
+        const img = document.createElement("img");
+        img.src = src;
+        img.alt = "Memory";
+        grid.appendChild(img);
+    });
+}
+
+function handleImageUpload(e) {
+    const files = e.target.files;
+    if (!files.length) return;
+
+    Array.from(files).forEach(file => {
+        const reader = new FileReader();
+        reader.onload = function(event) {
+            uploadedImages.push(event.target.result); // base64
+            loadGallery();
+            // localStorage mein save karo
+            localStorage.setItem("weddingUploadedImages", JSON.stringify(uploadedImages));
+        };
+        reader.readAsDataURL(file);
+    });
+}
+
+// Initialize Gallery
+document.addEventListener("DOMContentLoaded", () => {
+    // ... purana code ...
+
+    // Upload handler
+    const uploadInput = document.getElementById("imageUpload");
+    if (uploadInput) {
+        uploadInput.addEventListener("change", handleImageUpload);
+    }
+
+    // Load saved images from localStorage
+    const saved = localStorage.getItem("weddingUploadedImages");
+    if (saved) {
+        uploadedImages = JSON.parse(saved);
+    }
+
+    loadGallery();
+}}
     </script>
 </body>
   </html>
